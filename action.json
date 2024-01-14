@@ -1,0 +1,151 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "OpenAI Bot Transaction API",
+    "version": "1.0.0",
+    "description": "API for processing transactions with an OpenAI Bot."
+  },
+  "servers": [
+    {
+      "url": "https://relife.deno.dev"
+    }
+  ],
+  "paths": {
+    "/begin_a_new_life": {
+      "get": {
+        "description": "Begin a new life",
+        "operationId": "BeginANewLife",
+        "parameters": [],
+        "deprecated": false
+      }
+    },
+    "/batch": {
+        "post": {
+          "summary": "Get Event by Ages",
+          "description": "Get Event by Ages.",
+          "operationId": "getEventByAges",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ages": {
+                      "type": "list",
+                      "description": "ages"
+                    }
+                  },
+                  "required": [
+                    "ages"
+                  ]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Transaction processed successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "description": "Status of the transaction"
+                      },
+                      "details": {
+                        "type": "string",
+                        "description": "Detailed message about the transaction"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string",
+                        "description": "Error message"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+    "/": {
+      "post": {
+        "summary": "Get Event by Age",
+        "description": "Get Event by Age.",
+        "operationId": "getEventByAge",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "age": {
+                    "type": "int",
+                    "description": "age"
+                  }
+                },
+                "required": [
+                  "age"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Transaction processed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "description": "Status of the transaction"
+                    },
+                    "details": {
+                      "type": "string",
+                      "description": "Detailed message about the transaction"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
