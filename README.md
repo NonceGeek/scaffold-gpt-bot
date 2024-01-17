@@ -16,7 +16,7 @@ Scaffold for GPT Bot🤖 in GPT Store, based on `Deno` & `Supabase`, using Actio
 
  GPT Store 是 Chat GPT 今年推出的应用商城，我们可以在其中找到各种客制化的 GPT Bot。
 
-![image-20240113042417149](/Users/liaohua/Documents/image-20240113042417149.png)
+![image-20240113042417149](assets/image-20240113042417149.png)
 
 **GPT Store 对于开发者的机会在哪里？**
 
@@ -30,7 +30,7 @@ Scaffold for GPT Bot🤖 in GPT Store, based on `Deno` & `Supabase`, using Actio
 >
 > https://rest.latiao.online/
 
-<img src="/Users/liaohua/Library/Application Support/typora-user-images/image-20240116231319014.png" alt="image-20240116231319014" style="zoom:50%;" />
+<img src="assets/image-20240116231319014.png" alt="image-20240116231319014" style="zoom:50%;" />
 
 GPT Bot v1.0.0 Template 需要包含的要素：
 
@@ -59,11 +59,11 @@ GPT Bot v1.0.0 Template 需要包含的要素：
 
 主页放在 GPT Bot 的 Builder profile 里的 Website 中，在 GPT Store 的界面里可以看到。
 
-<img src="/Users/liaohua/Documents/image-20240116230627269.png" alt="image-20240116230627269" style="zoom:50%;" />
+<img src="assets/image-20240116230627269.png" alt="image-20240116230627269" style="zoom:50%;" />
 
 独立域名是一个很好的流量转化，可以将 GPT Bot 的用户引导到你的主页中来！
 
-![image-20240116230458013](/Users/liaohua/Documents/image-20240116230458013.png)
+![image-20240116230458013](assets/image-20240116230458013.png)
 
 ### 2.3 Instruction
 
@@ -95,7 +95,7 @@ if "加交流群" be contained in the prompt, then "Call the relife.deno.dev API
 
 Conversation starters 是用户初始进入 GPT Bot 的时候可以看到的提示词，可以直接作为按钮点击。
 
-<img src="/Users/liaohua/Documents/image-20240116235330124.png" alt="image-20240116235330124" style="zoom:50%;" />
+<img src="assets/image-20240116235330124.png" alt="image-20240116235330124" style="zoom:50%;" />
 
 <img src="/Users/liaohua/Documents/image-20240116235354357.png" alt="image-20240116235354357" style="zoom:50%;" />
 
@@ -139,7 +139,6 @@ Deno 操作文档：
 ```
 
 简单来讲，对开发者而言在 GPT Store 里面上线 GPT Bot 是一种很好的冷启动方式，可以在早期验证 Idea 是否合理。在验证完毕之后，可以将 Chatbot 独立出来，成为一款成熟的产品~
-
 
 
 
