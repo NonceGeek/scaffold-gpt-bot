@@ -97,7 +97,7 @@ Conversation starters 是用户初始进入 GPT Bot 的时候可以看到的提�
 
 <img src="assets/image-20240116235330124.png" alt="image-20240116235330124" style="zoom:50%;" />
 
-<img src="/Users/liaohua/Documents/image-20240116235354357.png" alt="image-20240116235354357" style="zoom:50%;" />
+<img src="assets/image-20240116235354357.png" alt="image-20240116235354357" style="zoom:50%;" />
 
 ### 2.5  Actions 
 
