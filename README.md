@@ -6,9 +6,9 @@ Scaffold for GPT Bot🤖 in GPT Store, based on `Deno` & `Supabase`, using Actio
 
 > Examples:
 >
-> * [Arweave-based Chatbot](https://chat.openai.com/g/g-eEapL5WnI-arweave-based-chatbot)
+> * [Arweave-based Chatbot](https://arweave.noncegeek.com)
 > * [❤️情感小助手❤️](https://chat.openai.com/g/g-fag5sbpxJ-qing-gan-xiao-zhu-shou)
-> * [人生重开模拟器](https://chat.openai.com/g/g-eCPKp94fN-ren-sheng-zhong-kai-mo-ni-qi)
+> * [人生重开模拟器](https://relive.noncegeek.com)
 
 ## 0x01 Quick Start⚡
 
