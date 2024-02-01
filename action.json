@@ -11,70 +11,96 @@
     }
   ],
   "paths": {
-    "/begin_a_new_life": {
+    "/talents": {
       "get": {
-        "description": "Begin a new life",
-        "operationId": "BeginANewLife",
+        "description": "get talants",
+        "operationId": "GetTalents",
         "parameters": [],
         "deprecated": false
       }
     },
-    "/batch": {
-        "post": {
-          "summary": "Get Event by Ages",
-          "description": "Get Event by Ages.",
-          "operationId": "getEventByAges",
-          "requestBody": {
+    "/random_book": {
+      "get": {
+        "description": "get random book",
+        "operationId": "GetRandomBook",
+        "parameters": [
+        ],
+        "deprecated": false
+      }
+    },
+    "/prompt": {
+      "get": {
+        "description": "get prompt",
+        "operationId": "GetPrompt",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The ID of the prompt.",
             "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/batch": {
+      "post": {
+        "summary": "Get Event by Ages",
+        "description": "Get Event by Ages.",
+        "operationId": "getEventByAges",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ages": {
+                    "type": "list",
+                    "description": "ages"
+                  }
+                },
+                "required": [
+                  "ages"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Transaction processed successfully",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "ages": {
-                      "type": "list",
-                      "description": "ages"
-                    }
-                  },
-                  "required": [
-                    "ages"
-                  ]
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Transaction processed successfully",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "status": {
-                        "type": "string",
-                        "description": "Status of the transaction"
-                      },
-                      "details": {
-                        "type": "string",
-                        "description": "Detailed message about the transaction"
-                      }
+                    "status": {
+                      "type": "string",
+                      "description": "Status of the transaction"
+                    },
+                    "details": {
+                      "type": "string",
+                      "description": "Detailed message about the transaction"
                     }
                   }
                 }
               }
-            },
-            "400": {
-              "description": "Bad request",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "error": {
-                        "type": "string",
-                        "description": "Error message"
-                      }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
                     }
                   }
                 }
@@ -82,7 +108,86 @@
             }
           }
         }
-      },
+      }
+    },
+    "/batch_without_talents": {
+      "post": {
+        "summary": "getEventByAgesWithoutTalents",
+        "description": "getEventByAgesWithoutTalents",
+        "operationId": "getEventByAgesWithoutTalents",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ages": {
+                    "type": "list",
+                    "description": "ages"
+                  }
+                },
+                "required": [
+                  "ages"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/result": {
+      "post": {
+        "summary": "Get EventResult by UUID",
+        "description": "Get EventResult by UUID.",
+        "operationId": "getEventResultByUUID",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "uuid": {
+                    "type": "string",
+                    "description": "uuid"
+                  }
+                },
+                "required": [
+                  "uuid"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events_be_choiced": {
+      "post": {
+        "summary": "Get EventCouldBeChoiced by Age",
+        "description": "Get EventCouldBeChoiced by Age.",
+        "operationId": "getEventEventCouldBeChoicedByAge",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "age": {
+                    "type": "int",
+                    "description": "age"
+                  }
+                },
+                "required": [
+                  "age"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
     "/": {
       "post": {
         "summary": "Get Event by Age",
