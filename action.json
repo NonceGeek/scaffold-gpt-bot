@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.0",
+  "openapi": "3.1.0",
   "info": {
     "title": "OpenAI Bot Transaction API",
     "version": "1.0.0",
@@ -15,7 +15,17 @@
       "get": {
         "description": "get talants",
         "operationId": "GetTalents",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "description": "The Type of the prompt.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "deprecated": false
       }
     },
@@ -23,8 +33,7 @@
       "get": {
         "description": "get random book",
         "operationId": "GetRandomBook",
-        "parameters": [
-        ],
+        "parameters": [],
         "deprecated": false
       }
     },
@@ -59,13 +68,21 @@
                 "type": "object",
                 "properties": {
                   "ages": {
-                    "type": "list",
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
                     "description": "ages"
+                  },
+                  "type": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "type"
                   }
                 },
-                "required": [
-                  "ages"
-                ]
+                "required": ["ages"]
               }
             }
           }
@@ -123,15 +140,24 @@
                 "type": "object",
                 "properties": {
                   "ages": {
-                    "type": "list",
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
                     "description": "ages"
                   }
                 },
-                "required": [
-                  "ages"
-                ]
+                "required": ["ages"]
               }
             }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Operation successful"
+          },
+          "400": {
+            "description": "Bad request"
           }
         }
       }
@@ -153,11 +179,17 @@
                     "description": "uuid"
                   }
                 },
-                "required": [
-                  "uuid"
-                ]
+                "required": ["uuid"]
               }
             }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Operation successful"
+          },
+          "400": {
+            "description": "Bad request"
           }
         }
       }
@@ -175,15 +207,21 @@
                 "type": "object",
                 "properties": {
                   "age": {
-                    "type": "int",
+                    "type": "integer",
                     "description": "age"
                   }
                 },
-                "required": [
-                  "age"
-                ]
+                "required": ["age"]
               }
             }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Operation successful"
+          },
+          "400": {
+            "description": "Bad request"
           }
         }
       }
@@ -201,13 +239,11 @@
                 "type": "object",
                 "properties": {
                   "age": {
-                    "type": "int",
+                    "type": "integer",
                     "description": "age"
                   }
                 },
-                "required": [
-                  "age"
-                ]
+                "required": ["age"]
               }
             }
           }

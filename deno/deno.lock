@@ -67,6 +67,46 @@
     "https://deno.land/x/oak/mod.ts": "https://deno.land/x/oak@v17.1.3/mod.ts"
   },
   "remote": {
+    "https://cdn.skypack.dev/-/@ethersproject/abi@v5.6.3-wilGMLRdbUV2UKPyrB8q/dist=es2019,mode=imports/optimized/@ethersproject/abi.js": "2fb2509cdf420f0969e800902b1a2b9e72428861a57c42f52ba750d6d3e08295",
+    "https://cdn.skypack.dev/-/@ethersproject/abstract-provider@v5.6.1-bSkWGTTHBHJgWZaNrdUa/dist=es2019,mode=imports/optimized/@ethersproject/abstract-provider.js": "477d7964097ceb265e51a93ac6529bf5211fae92ac7c41af21c07549ad680d6b",
+    "https://cdn.skypack.dev/-/@ethersproject/abstract-signer@v5.6.2-OCiifDF2sIT7J4kptVsS/dist=es2019,mode=imports/optimized/@ethersproject/abstract-signer.js": "bf6bf5324b2a6a51d964dabbf60215950846d81839e545494502f0c379dd9f1a",
+    "https://cdn.skypack.dev/-/@ethersproject/address@v5.6.1-U0WzxXtFESBeVpOJoLmI/dist=es2019,mode=imports/optimized/@ethersproject/address.js": "0549716bbb405b78da8ac149132a7876aac3e0004647268021606545df5c847b",
+    "https://cdn.skypack.dev/-/@ethersproject/base64@v5.6.1-tXUK2a5eF0mgkqYYl0xI/dist=es2019,mode=imports/optimized/@ethersproject/base64.js": "e157a4f047e7ca9bd3e016f7c94fcbac50a18d4f8f4db0af9002147ec714b93d",
+    "https://cdn.skypack.dev/-/@ethersproject/basex@v5.6.1-q4g98lIZwU2jUNQkMw0f/dist=es2019,mode=imports/optimized/@ethersproject/basex.js": "51637482754f35115e61196528f8b2097ff2d7a007f0d92f39ec8deda61e8d0f",
+    "https://cdn.skypack.dev/-/@ethersproject/bignumber@v5.6.2-0Xh896zEnBEEQJnoTCKw/dist=es2019,mode=imports/optimized/@ethersproject/bignumber.js": "7a3f828c039e91f4263318c867fa9ac33ab6087950876bad200523794e9f2cdb",
+    "https://cdn.skypack.dev/-/@ethersproject/bytes@v5.6.1-hOtaq2ZQ9ZNdDstIW5zz/dist=es2019,mode=imports/optimized/@ethersproject/bytes.js": "6fa7cba8b8027b861906b6064e6119ff8600151f46089857c4def2bce854ff9a",
+    "https://cdn.skypack.dev/-/@ethersproject/constants@v5.6.1-L0ZOiSh22gqorZO8SBCM/dist=es2019,mode=imports/optimized/@ethersproject/constants.js": "9720d3e7039d22861b03d5847aa1b1caed25cc34cce7a33bad5b07b9cc6629a4",
+    "https://cdn.skypack.dev/-/@ethersproject/contracts@v5.6.2-Q6dLd74mV0gjbeGyxMhN/dist=es2019,mode=imports/optimized/@ethersproject/contracts.js": "00bf48475a72fe94f26b1b53566b9eae1cca8a011918fdfce51aee7bcbd77109",
+    "https://cdn.skypack.dev/-/@ethersproject/hash@v5.6.1-jZviPsVuNh9O5bgruJ3R/dist=es2019,mode=imports/optimized/@ethersproject/hash.js": "1380f6f1e3379105c7ec807b8f0ef033f364c3cb5d7e5b54975dd140aa9ca171",
+    "https://cdn.skypack.dev/-/@ethersproject/hdnode@v5.6.2-o8UbD7X9alY330l9M8y5/dist=es2019,mode=imports/optimized/@ethersproject/hdnode.js": "9e9d39ade03d81bc217fe19eb2ec0f104d7d3b8222c43840f9bec69ffd318bb7",
+    "https://cdn.skypack.dev/-/@ethersproject/json-wallets@v5.6.1-26QQYIfrAVdTyX4ekRZA/dist=es2019,mode=imports/optimized/@ethersproject/json-wallets.js": "e1ac4ed228641e67f76cd7b8aaaa58597b367c5a61a711a1560bd801b6f5f8f9",
+    "https://cdn.skypack.dev/-/@ethersproject/keccak256@v5.6.1-WAYi11hgq0PKH0yPmXC9/dist=es2019,mode=imports/optimized/@ethersproject/keccak256.js": "1ab9429a0d8da71ed1b55eda6e4fd22b06980774fe1b7685e2e7379bb8428c89",
+    "https://cdn.skypack.dev/-/@ethersproject/logger@v5.6.0-sV1IhwbKBRUviels0nS9/dist=es2019,mode=imports/optimized/@ethersproject/logger.js": "03ab2f232e9b934dab558f4862f66e56eb22ffac1a3c493da30399f8d4696595",
+    "https://cdn.skypack.dev/-/@ethersproject/networks@v5.6.3-RWKmuJYdbFSELJ6Rg8Mw/dist=es2019,mode=imports/optimized/@ethersproject/networks.js": "69639ae21333575f21ad0a3e7e14f781cb71f2477605bb0f5c945a379c37d25c",
+    "https://cdn.skypack.dev/-/@ethersproject/pbkdf2@v5.6.1-GGRRTRrYagssmZ0tPrDR/dist=es2019,mode=imports/optimized/@ethersproject/pbkdf2.js": "1ef57f42f0afcf811bafb06db4cf9cfa9ff5aad56246394ddf38794818e3ec16",
+    "https://cdn.skypack.dev/-/@ethersproject/properties@v5.6.0-0IDA2QFgG8Yt5ntJRM7z/dist=es2019,mode=imports/optimized/@ethersproject/properties.js": "e365c067bd73975a5696ea69e2b6b91c86d255a5bac82c9a1f599ed23d82fbba",
+    "https://cdn.skypack.dev/-/@ethersproject/providers@v5.6.8-W5AETFp1QMf4jeEE2BSH/dist=es2019,mode=imports/optimized/@ethersproject/providers.js": "544a5cbd007847c017217f39685d6c74c2c9e39ca8e7cdf3f13999a16c983934",
+    "https://cdn.skypack.dev/-/@ethersproject/random@v5.6.1-k8CesFUa147ccuvLyIO8/dist=es2019,mode=imports/optimized/@ethersproject/random.js": "82027cb916161114381fd40a392ebc071ae1fc43eae511cd426b0aac3c8b4b75",
+    "https://cdn.skypack.dev/-/@ethersproject/rlp@v5.6.1-1WBxcJziiUnCuexvl7hW/dist=es2019,mode=imports/optimized/@ethersproject/rlp.js": "13a2760ac9d530b38ba74cd88062ed194071c2695c62948ed86dcb1ceb67a73a",
+    "https://cdn.skypack.dev/-/@ethersproject/sha2@v5.6.1-tDb6r9M0IUw6CzxVAj4F/dist=es2019,mode=imports/optimized/@ethersproject/sha2.js": "2ef24413cfce98591ca383e1eca3bd8ac992fb8a9dab1e3fb9de26326b13fa42",
+    "https://cdn.skypack.dev/-/@ethersproject/signing-key@v5.6.2-S3GrcvZv92oKMVmjknHI/dist=es2019,mode=imports/optimized/@ethersproject/signing-key.js": "0fb317b5d946499db667eb5005730c5e922fc72bf71f33a0b4e81a109f2e5d0b",
+    "https://cdn.skypack.dev/-/@ethersproject/solidity@v5.6.1-fAQ7F3sIRCa7Ee7dv503/dist=es2019,mode=imports/optimized/@ethersproject/solidity.js": "a1f658728a5a86501cae530e3e9509e01da5fd90e17eaa9b935c7d17c41558ca",
+    "https://cdn.skypack.dev/-/@ethersproject/strings@v5.6.1-sBesDiEaVdxY6rkwEHk1/dist=es2019,mode=imports/optimized/@ethersproject/strings.js": "15caaf619bc32bb6e357772687ed7232fd2a920085661d5cc825796d1a902231",
+    "https://cdn.skypack.dev/-/@ethersproject/transactions@v5.6.2-9o3cl3T9xTpEjFX00vDl/dist=es2019,mode=imports/optimized/@ethersproject/transactions.js": "6de3cebbf727060c4170de66d5b0a4806af10d182000a6e23b58b7bd2a0a8564",
+    "https://cdn.skypack.dev/-/@ethersproject/units@v5.6.1-DTma7YL6uxpuc2dqw2Wg/dist=es2019,mode=imports/optimized/@ethersproject/units.js": "1e2eb82d5a7fb845a025b8dc1b710c8beb67a914ebcbb67f9ed114a3ef8d3422",
+    "https://cdn.skypack.dev/-/@ethersproject/wallet@v5.6.2-hbht5UfbVmWkq5PkNraB/dist=es2019,mode=imports/optimized/@ethersproject/wallet.js": "f874828e2f86379bccf05deb2219e96185f8bada27416f66a0e108362ac3e786",
+    "https://cdn.skypack.dev/-/@ethersproject/web@v5.6.1-OVidcrJpszkd7P9STPaQ/dist=es2019,mode=imports/optimized/@ethersproject/web.js": "cb4a4027726e91ecf0f4c185a0659620e9136748fec690a1ab4bd4238c743f0f",
+    "https://cdn.skypack.dev/-/@ethersproject/wordlists@v5.6.1-H1jWjkHmHYrdVK5UnafO/dist=es2019,mode=imports/optimized/@ethersproject/wordlists.js": "d3ab109703f7683a55b7e8b4586d34054750543bcba44a19bb61bb6641da8d3c",
+    "https://cdn.skypack.dev/-/aes-js@v3.0.0-CwpFycLiPx6LKd7rO2KH/dist=es2019,mode=imports/optimized/aes-js.js": "416abe2daf0fd8138a6f3b8009ae4341982ea2edfe3085c8ab59ea9e0f910484",
+    "https://cdn.skypack.dev/-/bech32@v1.1.4-rteIMGXlAaeNKpjxmjm8/dist=es2019,mode=imports/optimized/bech32.js": "7a3a146d31253c9ed064a51d9f70270c94b50ac3975c7fa6aca88ed5aac519c7",
+    "https://cdn.skypack.dev/-/bn.js@v5.2.1-eEbVMmDiTD9y2Qvu4Z50/dist=es2019,mode=imports/optimized/bnjs.js": "5f901ebd734b7d6b68d4fa8c63e77d010fee04f998f17ef12b6c6a5e2d716843",
+    "https://cdn.skypack.dev/-/ethers@v5.6.8-bKxckRcNaAAD5PfOInnD/dist=es2019,mode=imports/optimized/ethers.js": "05214becffc1fc042ddbb8dc1266501041012f92e801b30cd74d345e1583e5df",
+    "https://cdn.skypack.dev/-/hash.js@v1.1.7-VoMLPpb2ceIc1uUFq329/dist=es2019,mode=imports/optimized/hashjs.js": "e5f22cc87ee052685f0b076ec1456d05ffea3bf79f9d5efdfb46fe93b4b58d9d",
+    "https://cdn.skypack.dev/-/inherits@v2.0.4-KMaJYACWZTuZGLpDmPB5/dist=es2019,mode=imports/optimized/inherits.js": "7dcafb2d3af9496f5ac53efdcfdb0badd089b592c117476dd5989065f4c33a49",
+    "https://cdn.skypack.dev/-/js-sha3@v0.8.0-ud9GGuNSDwGmNyhgrkZs/dist=es2019,mode=imports/optimized/js-sha3.js": "e2ce607ac76f499b82a4579f192011dca285f15707b1b76619a4de7920a7f3d3",
+    "https://cdn.skypack.dev/-/minimalistic-assert@v1.0.1-ChM2zHLByx49tkaQrKST/dist=es2019,mode=imports/optimized/minimalistic-assert.js": "423d6bb8e007c2313d0c7c500b18c370c6085a27b5b922c63bdb2cb6558f97c5",
+    "https://cdn.skypack.dev/-/scrypt-js@v3.0.1-i7o5WRRoCSQdh1RlLmux/dist=es2019,mode=imports/optimized/scrypt-js.js": "54d259c1b23814442a252fa58eda7c35ef025ba3033b82be3e234471604c17a1",
+    "https://cdn.skypack.dev/ethers@5.6.8": "eaa3f726080c54b0e1759b1a9deabdf504b8a6456204cc83636b1e54047db120",
     "https://deno.land/std@0.150.0/media_types/_util.ts": "ce9b4fc4ba1c447dafab619055e20fd88236ca6bdd7834a21f98bd193c3fbfa1",
     "https://deno.land/std@0.150.0/media_types/mod.ts": "2d4b6f32a087029272dc59e0a55ae3cc4d1b27b794ccf528e94b1925795b3118",
     "https://deno.land/std@0.150.0/media_types/vendor/mime-db.v1.52.0.ts": "724cee25fa40f1a52d3937d6b4fbbfdd7791ff55e1b7ac08d9319d5632c7f5af",
@@ -130,5 +170,10 @@
     "https://esm.sh/v135/utf-8-validate@6.0.4/denonext/utf-8-validate.mjs": "ab4990b545a45f10f7711c69046ee3e9c5b732b9781937f922cefd3fc99d0e88",
     "https://esm.sh/v135/websocket@1.0.34/denonext/websocket.mjs": "dfe5d62007e9f7430d561e2376fe47caa9d04cb016d83d3386fcc2206a90296b",
     "https://esm.sh/v135/ws@8.18.0/denonext/ws.mjs": "b4c6f51c7c4d60d2a880889c9b07e00aa367adf20a8304a365cc5e09051a5004"
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@deno/gfm@0.9"
+    ]
   }
 }

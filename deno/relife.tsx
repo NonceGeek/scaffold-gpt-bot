@@ -1,9 +1,10 @@
 import { Application, Router, send } from "https://deno.land/x/oak/mod.ts";
 import { oakCors } from "https://deno.land/x/cors/mod.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.5.0";
+import { ethers } from "https://cdn.skypack.dev/ethers@5.6.8";
 // import { Configuration, OpenAIApi } from 'https://esm.sh/openai@3.1.0'
 
-console.log("Hello from Dataset Query!");
+console.log("Hello from Relife!");
 
 const router = new Router();
 
@@ -26,8 +27,112 @@ const supabase = createClient(
   // { global: { headers: { Authorization: req.headers.get('Authorization')! } } }
 );
 
+// Function to verify a signature
+async function verify(address: string, message: string, signature: string): Promise<boolean> {
+  try {
+    // Hash the message using MD5
+    const messageBytes = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest('MD5', messageBytes);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    
+    // Prefix the hash according to EIP-191
+    const prefixedMessage = `\x19Ethereum Signed Message:\n${hashHex.length}${hashHex}`;
+    
+    // Recover the address from the signature
+    const recoveredAddress = ethers.utils.verifyMessage(prefixedMessage, signature);
+    
+    // Compare the recovered address with the provided address
+    return recoveredAddress.toLowerCase() === address.toLowerCase();
+  } catch (error) {
+    console.error("Signature verification error:", error);
+    return false;
+  }
+}
 
 router
+  .get("/prompts", async (context) => {
+    // TODO: get all prompts from supabase.
+    const { data, error } = await supabase
+      .from("sim_life_prompts")
+      .select();
+    
+    if (error) {
+      context.response.status = 500;
+      context.response.body = { error: error.message };
+      return;
+    }
+    
+    context.response.body = data;
+  })
+  .get("/prompt/:id", async (context) => {
+    // TODO: get the prompt from supabase.
+    const id = context.params.id;
+    
+    if (!id) {
+      context.response.status = 400;
+      context.response.body = { error: "Missing prompt ID" };
+      return;
+    }
+    
+    const { data, error } = await supabase
+      .from("sim_life_prompts")
+      .select()
+      .eq("id", id)
+      .single();
+    
+    if (error) {
+      context.response.status = error.code === "PGRST116" ? 404 : 500;
+      context.response.body = { error: error.message };
+      return;
+    }
+    
+    context.response.body = data;
+  })
+  .post("/prompt_set", async (context) => {
+    let content = await context.request.body.text();
+    content = JSON.parse(content);
+    const id = content.id;
+    const new_prompt = content.prompt;
+    const signature = content.signature;
+    let addr = content.addr;
+    // step1. get the old prompt from supabase.
+    const { data, error } = await supabase
+      .from("sim_life_prompts")
+      .select()
+      .eq("id", id)
+      .single();
+    // {"id":5,"created_at":"2024-01-24T05:54:22.032169+00:00","prompt":"如果要进行内容上传，目前有两种选择：\n1. 上传 500 字以内内容，调用 Arweave 托管钱包进行免费上传；\n2. 上传 500 字以上内容，通过 dApp 进行上传，请进行你的选择。\nif choice=1, ask for the content, then call the arweave-query.deno.dev API with the uploadContent operation with content = content","name":"upload_to_arweave","controllers":["0x73c7448760517E3E6e416b2c130E3c6dB2026A1d"]}
+    // step2. verify the addr in the controller list.
+    let controllers = data.controllers;
+    // downcase the addr and controllers.
+    addr = addr.toLowerCase();
+    controllers = controllers.map(controller => controller.toLowerCase());
+    if (!controllers.includes(addr)) {
+      context.response.status = 403;
+      context.response.body = { error: "the addr is not in the controller list." };
+      return;
+    }
+    // step3. verify the signature, the signatue is the sig for the md5(old prompt)
+    const sig = await verify(addr, data.prompt, signature);
+    if (!sig) {
+      context.response.status = 403;
+      context.response.body = { error: "the signature is not valid." };
+      return;
+    }
+    // step4. set the new_prompt to supabase.
+    const { new_data, new_error } = await supabase
+      .from("sim_life_prompts")
+      .update({ prompt: new_prompt })
+      .eq("id", id)
+      .single();
+    if (error) {
+      context.response.status = 500;
+      context.response.body = { error: error.message };
+      return;
+    }
+    context.response.body = { message: "the prompt is set successfully." + JSON.stringify(new_data) };
+  })
   .post("/", async (context) => {
     let content = await context.request.body.text();
     content = JSON.parse(content);
@@ -67,7 +172,13 @@ router
       .select()
       .eq("age", age);
     const randomIndex = Math.floor(Math.random() * data.length);
-    context.response.body = "The events is " + data[randomIndex].content + ". The branches are" + JSON.stringify(data[randomIndex].branches) + ", the uuid of this event is: " + data[randomIndex].uuid
+    context.response.body =
+      "The events is " +
+      data[randomIndex].content +
+      ". The branches are" +
+      JSON.stringify(data[randomIndex].branches) +
+      ", the uuid of this event is: " +
+      data[randomIndex].uuid;
   })
   .post("/result", async (context) => {
     let content = await context.request.body.text();
@@ -80,7 +191,7 @@ router
       .select()
       .eq("uuid", uuid);
     const results = data[0].results;
-    context.response.body = "The results are " + JSON.stringify(results)
+    context.response.body = "The results are " + JSON.stringify(results);
   })
   .get("/begin_a_new_life", async (context) => {
     const supabase = createClient(
@@ -104,6 +215,44 @@ router
     let content = await context.request.body.text();
     content = JSON.parse(content);
     const ages = content.ages;
+    const type = content.type ? content.type : ["normal"];
+    console.log("ages", ages);
+    const supabase = createClient(
+      Deno.env.get("SUPABASE_URL") ?? "",
+      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? ""
+    );
+
+    let events = [];
+
+    for (const age of ages) {
+      const { data, error } = await supabase
+        .from("sim_life_events")
+        .select()
+        .eq("age", age);
+
+      if (data && data.length > 0) {
+        const randomIndex = Math.floor(Math.random() * data.length);
+        events.push(data[randomIndex]);
+      }
+    }
+
+    const { data, error } = await supabase
+      .from("sim_life_talents")
+      .select()
+      .eq("type", JSON.stringify(type));
+    console.log("data:", data);
+    // Assuming 'data' is an array of items
+    const shuffledData = shuffleArray(data);
+
+    // Get the first three items from the shuffled array
+    const randomThreeItems = shuffledData.slice(0, 3);
+    const results = { events: events, talents: randomThreeItems };
+    context.response.body = results;
+  })
+  .post("/batch_without_talents_coze", async (context) => {
+    let content = await context.request.body.text();
+    content = JSON.parse(content);
+    const ages = JSON.parse(content.ages);
     // const content = await context.request.body().value;
     // const ages = content.ages;
     console.log("ages", ages);
@@ -125,15 +274,7 @@ router
         events.push(data[randomIndex]);
       }
     }
-
-    const { data, error } = await supabase.from("sim_life_talents").select();
-
-    // Assuming 'data' is an array of items
-    const shuffledData = shuffleArray(data);
-
-    // Get the first three items from the shuffled array
-    const randomThreeItems = shuffledData.slice(0, 3);
-    const results = { events: events, talents: randomThreeItems };
+    const results = { events: events };
     context.response.body = results;
   })
   .post("/batch_without_talents", async (context) => {
@@ -161,28 +302,37 @@ router
         events.push(data[randomIndex]);
       }
     }
-    const results = { events: events};
+    const results = { events: events };
     context.response.body = results;
   })
   .get("/random_book", async (context) => {
-    const data = ['辟邪剑谱', '金刚经', '金瓶梅', '非欧几何'];
+    const data = ["辟邪剑谱", "金刚经", "金瓶梅", "非欧几何"];
     const randomIndex = Math.floor(Math.random() * data.length);
     context.response.body = data[randomIndex];
-  }) 
+  })
   .get("/talents", async (context) => {
+    const queryParams = context.request.url.searchParams;
+    let typeString = queryParams.get("type"); // 'id' will be a string or null if not present
+    if (typeString === "冰与火之歌") {
+      typeString = "ice_and_fire";
+    }
+    const type = typeString ? [typeString] : ["normal"];
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL") ?? "",
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? ""
     );
 
-    const { data, error } = await supabase.from("sim_life_talents").select();
+    const { data, error } = await supabase
+      .from("sim_life_talents")
+      .select()
+      .eq("type", JSON.stringify(type));
 
     // Assuming 'data' is an array of items
     const shuffledData = shuffleArray(data);
 
     // Get the first three items from the shuffled array
     const randomThreeItems = shuffledData.slice(0, 3);
-    context.response.body = randomThreeItems;
+    context.response.body = { talents: randomThreeItems };
   })
   .get("/prompt", async (context) => {
     const queryParams = context.request.url.searchParams;
@@ -197,8 +347,9 @@ router
     const { data, error } = await supabase
       .from("sim_life_prompts")
       .select()
-      .eq("id", id);
-    context.response.body = data;
+      .eq("id", id)
+      .single();
+    context.response.body = data.prompt;
   });
 
 const app = new Application();

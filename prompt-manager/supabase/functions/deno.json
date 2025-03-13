@@ -1,0 +1,10 @@
+{
+  "deploy": {
+    "project": "cf07e5bc-97b6-4a98-8122-6ca9ccdf18c2",
+    "exclude": [
+      "**/node_modules"
+    ],
+    "include": [],
+    "entrypoint": "batch_to_vector/index.ts"
+  }
+}
