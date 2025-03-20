@@ -102,8 +102,18 @@ export const Header = () => {
             <Image alt="SE2 logo" className="cursor-pointer" fill src="/logo.svg" />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold leading-tight">CRW Smart Contract Interactor</span>
-            <span className="text-xs">Interact with CRW Smart Contract.</span>
+            <span className="font-bold leading-tight">
+              Prompt Manager for the{" "}
+              <a
+                href="https://github.com/NonceGeek/scaffold-gpt-bot"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                Scaffold GPT Bot
+              </a>
+            </span>
+            <span className="text-xs">Manager the prompts using in the Scaffold GPT Bot.</span>
           </div>
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">
